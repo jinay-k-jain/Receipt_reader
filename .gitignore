@@ -12,6 +12,4 @@ runs/
 # OS files
 .DS_Store
 
-# Temporary outputs (optional)
-outputs/*.jpg
-outputs/*.png
+
