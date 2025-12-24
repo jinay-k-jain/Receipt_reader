@@ -7,8 +7,6 @@ from ocr_utils import (
     ocr_numeric,
     ocr_text,
 )
-
-# ---------------- CONFIG ----------------
 MODEL_PATH = "runs/detect/train/weights/best.pt"
 IMAGE_DIR = "data/raw_images"
 OUT_DIR = "outputs"
@@ -23,10 +21,7 @@ NUMERIC_FIELDS = {
 
 os.makedirs(OUT_DIR, exist_ok=True)
 
-# ---------------- LOAD YOLO ----------------
 model = YOLO(MODEL_PATH)
-
-# ---------------- RUN INFERENCE ----------------
 results = model(IMAGE_DIR, conf=0.25)
 
 final_results = []
@@ -53,8 +48,7 @@ for r in results:
         roi = img[y1:y2, x1:x2]
         if roi.size == 0:
             continue
-
-        # -------- FIELD-SPECIFIC PREPROCESS + OCR --------
+            
         if cls_name in NUMERIC_FIELDS:
             proc = preprocess_numeric(roi)
             text = ocr_numeric(proc)
@@ -63,15 +57,10 @@ for r in results:
             text = ocr_text(proc)
 
         record["fields"][cls_name] = text
-
-        # Debug save (optional)
-        # Save raw ROI
         cv2.imwrite(
             f"{OUT_DIR}/{record['image']}_{cls_name}_raw.jpg",
             roi,
         )
-
-        # Save preprocessed ROI
         cv2.imwrite(
             f"{OUT_DIR}/{record['image']}_{cls_name}_proc.jpg",
             proc,
@@ -80,7 +69,6 @@ for r in results:
 
     final_results.append(record)
 
-# ---------------- OUTPUT ----------------
 print("\n--- FINAL OCR OUTPUT ---")
 for r in final_results:
     print(r)
