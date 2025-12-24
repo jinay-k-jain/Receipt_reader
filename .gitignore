@@ -1,15 +1,10 @@
-# Python
 __pycache__/
 *.pyc
-
-# Virtual environments
 venv/
 opencv_env/
-
-# YOLO training runs
 runs/
-
-# OS files
 .DS_Store
+output/
+
 
 

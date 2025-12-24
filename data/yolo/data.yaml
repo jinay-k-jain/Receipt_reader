@@ -1,0 +1,16 @@
+path: /home/joy/opencv_env/receipt_reader/data/yolo
+
+train: train/images
+val: valid/images
+test: test/images
+
+nc: 7
+
+names:
+  0: date
+  1: late_fee
+  2: name
+  3: policy_no
+  4: premium
+  5: receipt_no
+  6: total
