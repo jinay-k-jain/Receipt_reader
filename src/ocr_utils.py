@@ -3,32 +3,18 @@ import pytesseract
 import re
 
 CONF_THRESHOLD = 60
-
-
-# ---------- PREPROCESSING ----------
 def preprocess_numeric(roi):
-    """
-    Strong preprocessing for digits:
-    premium, total, receipt_no, policy_no, late_fee
-    """
     gray = cv2.cvtColor(roi, cv2.COLOR_BGR2GRAY)
     gray = cv2.GaussianBlur(gray, (3, 3), 0)
     _, th = cv2.threshold(
-        gray, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU
-    )
+        gray, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
     return th
-
-
+    
 def preprocess_text(roi):
-    """
-    Light preprocessing for name, date
-    """
     gray = cv2.cvtColor(roi, cv2.COLOR_BGR2GRAY)
     gray = cv2.bilateralFilter(gray, 9, 75, 75)
     return gray
-
-
-# ---------- OCR ----------
+    
 def ocr_numeric(img):
     config = "--psm 7 -c tessedit_char_whitelist=0123456789./"
     data = pytesseract.image_to_data(
