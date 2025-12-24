@@ -61,23 +61,14 @@ This design separates *layout understanding* from *text recognition*, which sign
 receipt_reader/
 
 ├── data/
-
 │ └── raw_images/ # Input receipt images
-
 ├── models/
-
 │ └── yolov8n.pt # Base YOLO model
-
 ├── src/
-
 │ ├── ocr_utils.py # OCR + preprocessing utilities
-
 │ └── yolo_ocr_pipeline.py
-
 ├── outputs/ # Debug crops (ignored in git)
-
 ├── runs/ # YOLO training runs (ignored)
-
 └── README.md
 ---
 
