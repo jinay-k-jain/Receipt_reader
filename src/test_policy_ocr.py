@@ -2,7 +2,7 @@ import cv2
 from ocr_masking import ocr_with_mask
 from ocr_masking import preprocess_for_ocr
 
-IMG_PATH = "data/raw_images/lic_01.jpeg"
+IMG_PATH = "data/processed_images/threshold.jpg"
 
 img = cv2.imread(IMG_PATH)
 if img is None:

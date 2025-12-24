@@ -1,7 +1,7 @@
 import cv2
 import os
 
-IMG_PATH = "data/raw_images/lic_01.jpeg"
+IMG_PATH = "data/raw_images/4.jpeg"
 OUT_DIR = "data/processed_images"
 
 os.makedirs(OUT_DIR, exist_ok=True)
