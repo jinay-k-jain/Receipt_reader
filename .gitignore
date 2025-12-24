@@ -5,6 +5,7 @@ opencv_env/
 runs/
 .DS_Store
 output/
+yolo_train/
 
 
 
